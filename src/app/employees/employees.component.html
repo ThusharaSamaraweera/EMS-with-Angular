@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-header">{{title}}</div>
+  <div class="card-header">{{ title }}</div>
   <div class="card-body">
     <div class="row">
       <div class="col-md-2">Designation Filter:</div>
@@ -12,11 +12,13 @@
         </div>
       </div>
       <div class="table-resposive">
-        <table class="table" *ngIf="employees.length" >
+        <table class="table" *ngIf="employees.length">
           <thead>
             <tr>
               <th>
-                <button class="btn btn-primary">show avatar</button>
+                <button class="btn btn-primary" (click)="toggleIcon()">
+                  {{ showIcon ? "Hide" : "Show" }} avatar
+                </button>
               </th>
               <th>First Name</th>
               <th>Last Name</th>
@@ -25,6 +27,24 @@
               <th>RBT progress</th>
             </tr>
           </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees">
+              <td>
+                <img [src]="employee.icon" *ngIf="showIcon" />
+              </td>
+              <td>{{ employee.firstName }}</td>
+              <td>{{ employee.lastName }}</td>
+              <td>{{ employee.designation }}</td>
+              <td>
+                {{
+                  employee.insuranceBalance
+                    | currency: "LKR":"symbol":"3.2-2"
+                    | lkrFormatter: "Rs. "
+                }}
+              </td>
+              <td>{{ employee.rbtProgress }}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>

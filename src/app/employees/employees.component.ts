@@ -9,8 +9,13 @@ import employees from './data/employees.json';
 export class EmployeesComponent implements OnInit {
   title: string = 'Employee Management System';
   employees: any[] = employees;
+  showIcon: boolean = false;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  toggleIcon() {
+    this.showIcon = !this.showIcon;
+  }
 }
