@@ -12,6 +12,7 @@ export class EmployeesComponent implements OnInit {
   employees: Employee[] = employees;
   showIcon: boolean = false;
   filteredEmployees: Employee[] = employees;
+  message: string = '';
   private _designationFilter: string = '';
 
   set designationFilter(value: string) {
@@ -37,5 +38,9 @@ export class EmployeesComponent implements OnInit {
         .toLowerCase()
         .includes(this.designationFilter.toLowerCase())
     );
+  }
+
+  onMessageReceived(message: string) {
+    this.message = message;
   }
 }
