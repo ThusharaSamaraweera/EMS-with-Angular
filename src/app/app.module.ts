@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { LkrFormatterPipe } from './shared/lkr-formatter.pipe';
+import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeesComponent,
-    LkrFormatterPipe
+    LkrFormatterPipe,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import employees from './data/employees.json';
+import { Employee } from './Employee.model';
 
 @Component({
   selector: 'app-employees',
@@ -8,9 +9,9 @@ import employees from './data/employees.json';
 })
 export class EmployeesComponent implements OnInit {
   title: string = 'Employee Management System';
-  employees: any[] = employees;
+  employees: Employee[] = employees;
   showIcon: boolean = false;
-  filteredEmployees: any[] = employees;
+  filteredEmployees: Employee[] = employees;
   private _designationFilter: string = '';
 
   set designationFilter(value: string) {

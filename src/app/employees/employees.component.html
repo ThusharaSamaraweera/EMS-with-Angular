@@ -8,7 +8,7 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <h6>Filtered by : {{ designationFilter }}</h6>
+          <h6 class="text-red">Filtered by : {{ designationFilter }}</h6>
         </div>
       </div>
       <div class="table-resposive">
@@ -42,7 +42,8 @@
                     | lkrFormatter: "Rs. "
                 }}
               </td>
-              <td>{{ employee.rbtProgress }}</td>
+              <!-- <td>{{ employee.rbtProgress }}</td> -->
+              <td><app-progress-bar [progress]="employee.rbtProgress"></app-progress-bar></td>
             </tr>
           </tbody>
         </table>
