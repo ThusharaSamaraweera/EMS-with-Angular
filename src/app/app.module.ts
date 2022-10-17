@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component';
 import { HomeComponent } from './home/home.component';
+import { CreateEmployeeGuard } from './employees/create-employee.guard';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,17 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     RouterModule.forRoot([
       {
+        path: 'home',
+        component: HomeComponent,
+      },
+      {
         path: 'employees',
         component: EmployeesComponent,
       },
       {
-        path: 'home',
-        component: HomeComponent,
+        path: 'employees/:id',
+        component: EmployeesComponent,
+        canActivate: [CreateEmployeeGuard]
       },
       {
         path: '',
