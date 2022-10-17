@@ -26,6 +26,7 @@ export class CreateEmployeeGuard implements CanActivate {
     let depId: number = Number(route.paramMap.get('id'));
 
     if (depId % 2 == 0) {
+      alert("Not allowed")
       this.router.navigate(['/home']);
     }
     return true;

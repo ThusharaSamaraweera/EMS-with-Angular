@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { LkrFormatterPipe } from './shared/lkr-formatter.pipe';
 
@@ -22,6 +23,7 @@ import { CreateEmployeeGuard } from './employees/create-employee.guard';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
         path: 'home',

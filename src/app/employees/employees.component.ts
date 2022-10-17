@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import employees from './data/employees.json';
+import { Subscription } from 'rxjs';
 import { Employee } from './Employee.model';
+import { EmployeeService } from './employee.service';
 
 @Component({
   selector: 'app-employees',
@@ -9,10 +10,11 @@ import { Employee } from './Employee.model';
 })
 export class EmployeesComponent implements OnInit {
   title: string = 'Employee Management System';
-  employees: Employee[] = employees;
+  employees!: Employee[];
   showIcon: boolean = false;
-  filteredEmployees: Employee[] = employees;
+  filteredEmployees!: Employee[];
   message: string = '';
+  subscribe!: Subscription;
   private _designationFilter: string = '';
 
   set designationFilter(value: string) {
@@ -24,9 +26,17 @@ export class EmployeesComponent implements OnInit {
     return this._designationFilter;
   }
 
-  constructor() {}
+  constructor(private employeeService: EmployeeService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subscribe = this.employeeService.getEmployees().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.filteredEmployees = data;
+        this.employees = this.filteredEmployees;
+      },
+    });
+  }
 
   toggleIcon() {
     this.showIcon = !this.showIcon;
